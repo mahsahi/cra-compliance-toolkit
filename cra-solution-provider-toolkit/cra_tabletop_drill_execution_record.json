@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "drill_id": "DRILL-2026-CRA-ALPHA",
+  "scenario_type": "actively_exploited_vulnerability",
+  "scenario": "Operation DarkFrame: Simulated zero-day unauthenticated heap buffer overflow (CVE-2026-49120) in SEG-5000 Edge Gateway netframed binary actively exploited in the wild across EU Member States.",
+  "fictional": true,
+  "detection_timestamp": "2026-10-12T08:00:00+02:00",
+  "awareness_timestamp": "2026-10-12T10:00:00+02:00",
+  "awareness_reasoning": "Technical triage confirmed unauthenticated RCE via heap corruption in netframed v3.4.0 and matching PCAP reverse shell traffic from customer SOC in Germany.",
+  "csirt_endpoint": "CSIRT-IE (National CSIRT of Ireland)",
+  "csirt_determination_basis": "Article 14(7) Main Establishment rule: corporate headquarters and strategic cybersecurity engineering decisions predominantly taken in Dublin, Ireland.",
+  "deadlines": {
+    "early_warning_due": "2026-10-13T10:00:00+02:00",
+    "notification_due": "2026-10-15T10:00:00+02:00",
+    "final_report_due": "2026-10-30T12:00:00+02:00",
+    "final_report_rule": "No later than 14 days after a corrective or mitigating measure is available (Article 14(2)(c))."
+  },
+  "steps": [
+    {
+      "step": "Triage & Formal Awareness Determination Gate",
+      "planned_by": "2026-10-12T12:00:00+02:00",
+      "completed_at": "2026-10-12T10:00:00+02:00",
+      "on_time": true,
+      "notes": "Legal awareness formally established and signed by CISO within 2 hours of telemetry ingress."
+    },
+    {
+      "step": "Article 14(2)(a) Early Warning Formulation & Delayed Dissemination Request",
+      "planned_by": "2026-10-12T23:00:00+02:00",
+      "completed_at": "2026-10-12T20:30:00+02:00",
+      "on_time": true,
+      "notes": "Affected Member States identified (DE, FR, IE, NL). Delayed dissemination requested under Delegated Regulation (EU) 2026/881."
+    },
+    {
+      "step": "Simulated ENISA SRP Early Warning Submission",
+      "planned_by": "2026-10-13T08:00:00+02:00",
+      "completed_at": "2026-10-12T22:00:00+02:00",
+      "on_time": true,
+      "notes": "Simulated submission completed 12 hours ahead of statutory 24-hour deadline."
+    },
+    {
+      "step": "CVD Intake Response & Safe Harbor Acknowledgment",
+      "planned_by": "2026-10-13T12:00:00+02:00",
+      "completed_at": "2026-10-12T16:00:00+02:00",
+      "on_time": true,
+      "notes": "Responded to external researcher PoC within 2 hours under RFC 9116 and Legal Safe Harbor."
+    },
+    {
+      "step": "Article 14(8) Proportional Customer Security Advisory (CSAF 2.0 / OpenVEX)",
+      "planned_by": "2026-10-13T18:00:00+02:00",
+      "completed_at": "2026-10-13T15:00:00+02:00",
+      "on_time": true,
+      "notes": "Emergency iptables firewall workaround published to customer portal without weaponization disclosures."
+    },
+    {
+      "step": "Article 14(2)(b) Detailed Notification Submission to ENISA SRP",
+      "planned_by": "2026-10-15T06:00:00+02:00",
+      "completed_at": "2026-10-14T16:00:00+02:00",
+      "on_time": true,
+      "notes": "Submitted root-cause CWE-122 analysis, CVSS 10.0 vector, and TLP:AMBER+STRICT grading 18 hours ahead of 72h limit."
+    },
+    {
+      "step": "Hotfix v3.4.1 Engineering, Pre-Release ASan Testing & Ed25519 Signing",
+      "planned_by": "2026-10-16T18:00:00+02:00",
+      "completed_at": "2026-10-16T12:00:00+02:00",
+      "on_time": true,
+      "notes": "Pre-release testing verified zero regressions; Ed25519 signature generated; free OTA distribution deployed."
+    },
+    {
+      "step": "Article 13(6) Upstream Maintainer Patch Sharing",
+      "planned_by": "2026-10-17T12:00:00+02:00",
+      "completed_at": "2026-10-16T17:00:00+02:00",
+      "on_time": true,
+      "notes": "Submitted sanitized patch to upstream open-source libframenet project maintainer."
+    },
+    {
+      "step": "Simulated ENISA SRP 14-Day Final Report Submission",
+      "planned_by": "2026-10-30T10:00:00+02:00",
+      "completed_at": "2026-10-21T11:00:00+02:00",
+      "on_time": true,
+      "notes": "Final post-mortem and mitigation dossier submitted 9 days ahead of statutory 14-day limit."
+    }
+  ],
+  "user_information_step": "Customer advisory ADV-2026-0042 distributed via authenticated portal within 29 hours of awareness; final update distributed free of charge via OTA.",
+  "outcome": "pass",
+  "findings": [
+    "PAR and SAR delegation rota functioned with zero friction during simulated off-hours escalation.",
+    "Customer portal automated CSAF distribution requires integration with SIEM webhook in Q1 2027.",
+    "Article 13(6) upstream open-source coordination workflow operated smoothly without premature disclosure."
+  ],
+  "participants": [
+    "Chief Information Security Officer (Incident Commander)",
+    "Product Security Engineering Lead (PSIRT Lead)",
+    "General Counsel (Regulatory Compliance Lead)",
+    "Lead Solutions Architect (Product Scope Lead)",
+    "VP Product Marketing (Communications Lead)",
+    "Lead DevOps Engineer (OTA Release Lead)"
+  ]
+}

@@ -1,0 +1,249 @@
+import json
+
+gaps_roadmap = [
+    {
+        "id": "CRA-GAP-REP-01",
+        "req_id": "CRA-REQ-REP-01",
+        "gap": "No automated reporting mechanism to the ENISA Single Reporting Platform (SRP) or national CSIRTs exists within the security toolchain; tools detect CVEs but cannot execute legal 24h / 72h / 14-day statutory notifications.",
+        "risk": "Direct violation of live Article 14 obligations (statutory law since 11 September 2026); severe administrative fines under Art 64(2) up to €15,000,000 or 2.5% of global turnover; national regulatory injunctions.",
+        "control": "Implement and operationalize the Article 14 Operational Runbook: establish 24/7 PSIRT awareness tracking, secure ENISA SRP credentials (EU Login / FIDO2) for Primary/Secondary Representatives, and integrate incident escalation bridges.",
+        "owner": "CISO, Head of PSIRT, Legal Counsel",
+        "priority": "Critical (Statutory duty live right now since Sept 2026; missing 24h clock triggers immediate non-compliance)",
+        "phase": "Immediate (Live Operation / RUN)",
+        "evidence": "Approved Article 14 Operational Runbook; Tested ENISA SRP credentials; Bi-annual simulated reporting drill receipts; 24/7 on-call escalation roster.",
+        "dependencies": "Incident Management Vault, ENISA SRP corporate account creation, legal escalation protocol."
+    },
+    {
+        "id": "CRA-GAP-REP-02",
+        "req_id": "CRA-REQ-REP-02",
+        "gap": "Lack of a formalized classification matrix and procedural bridge to detect and report severe incidents impacting product security (e.g., CI/CD build compromise, signing key theft) to CSIRTs/ENISA within statutory 24h / 72h / 1-month clocks.",
+        "risk": "Failure to report build supply-chain attacks or systemic infrastructure outages impacting product integrity; joint liability under NIS2 and CRA Article 14.",
+        "control": "Adopt SOC Severe Incident Identification Matrix; train SOC and DevSecOps teams on CRA incident triggers; establish immediate notification bridge from SOC to CISO and Legal.",
+        "owner": "CISO, Head of SOC, Lead DevSecOps Architect",
+        "priority": "Critical (Live obligation; supply chain incidents require statutory reporting within 24 hours of awareness)",
+        "phase": "Immediate (Live Operation / RUN)",
+        "evidence": "SOC Severe Incident Playbook; Incident awareness timestamp logs; Tabletop supply chain incident simulation records.",
+        "dependencies": "SOC SIEM correlation rules, DevSecOps pipeline audit logging, Legal review."
+    },
+    {
+        "id": "CRA-GAP-REP-03",
+        "req_id": "CRA-REQ-REP-03",
+        "gap": "No automated or formal communications mechanism exists to notify affected customers and end-users 'without undue delay' regarding actively exploited vulnerabilities or severe incidents with actionable mitigation instructions.",
+        "risk": "Customer exploitation due to delayed warning; breach of Article 14(8); customer contractual claims and reputation damage; regulatory reprimands.",
+        "control": "Deploy a Customer Emergency Advisory Broadcast System: maintain an updated customer security contact database, pre-approved advisory templates, and a dedicated customer security alert portal.",
+        "owner": "VP Customer Success, PSIRT Communications Lead, Legal Counsel",
+        "priority": "Critical (Required to protect customers from active attacks; mandatory under Art 14(8))",
+        "phase": "Immediate (Q4 2026)",
+        "evidence": "Customer Emergency Advisory Runbook; Verified customer security contact registry; Advisory broadcast test logs.",
+        "dependencies": "CRM customer security contact field, PSIRT advisory authoring pipeline."
+    },
+    {
+        "id": "CRA-GAP-GOV-01",
+        "req_id": "CRA-REQ-MGT-05",
+        "gap": "Absence of a formalized corporate policy and multi-year sustaining engineering budget model to determine and publicly commit to a guaranteed product support period (statutory baseline: minimum 5 years).",
+        "risk": "Inability to market product in EU after Dec 2027; invalid Annex II documentation; customer litigation if updates terminate prematurely.",
+        "control": "Establish Executive Support Period Governance Policy: mandate a minimum 5-year support period (or formally documented technical justification for shorter life); create multi-year financial reserve for sustained security engineering.",
+        "owner": "VP Product Management, Business Unit General Manager, Chief Financial Officer",
+        "priority": "Critical (Determines business model, customer contracts, and product pricing viability)",
+        "phase": "Presales and Product Planning (Q1 2027)",
+        "evidence": "Executive Support Period Policy; Product Lifecycle Determination Record; 5-Year Sustaining Budget Allocation Model; Public Lifecycle Web Portal.",
+        "dependencies": "Product roadmap, component end-of-life commitments from suppliers, finance models."
+    },
+    {
+        "id": "CRA-GAP-GOV-02",
+        "req_id": "CRA-REQ-VULN-05",
+        "gap": "Lack of a publicly accessible Coordinated Vulnerability Disclosure (CVD) policy aligned with ISO/IEC 29147, including legal safe harbor protections for ethical security researchers.",
+        "risk": "Non-compliance with Annex I, Part II, point (5); legal friction with security researchers; uncoordinated public disclosure of zero-day exploits.",
+        "control": "Draft, legally approve, and publish a formal CVD Policy conforming to ISO/IEC 29147; offer legal safe harbor; publish PGP keys and response SLA commitments on `/security/disclosure`.",
+        "owner": "CISO, Head of PSIRT, General Counsel",
+        "priority": "High (Prerequisite for responsible community collaboration and Annex VII compliance)",
+        "phase": "Development / Deployment (Q1 2027)",
+        "evidence": "Published CVD Policy Document; PGP Key in public registry; Legal Safe Harbor Terms; ISO/IEC 29147 Alignment Matrix.",
+        "dependencies": "Legal Counsel approval, PSIRT triage queue, public web infrastructure."
+    },
+    {
+        "id": "CRA-GAP-GOV-03",
+        "req_id": "CRA-REQ-VULN-06",
+        "gap": "Missing RFC 9116 compliant `security.txt` file and dedicated 24/7/365 external vulnerability intake contact point across product domains and software distributions.",
+        "risk": "Researchers cannot contact security team; delays in awareness of critical exploits; non-compliance with Annex I Part II point (6) and Art 13(19).",
+        "control": "Deploy RFC 9116 `security.txt` on all public domains and API gateways; establish dedicated, monitored `security@company.com` intake queue linked directly to PSIRT ticketing.",
+        "owner": "PSIRT Lead, Web Infrastructure Lead",
+        "priority": "High (Simple to implement; critical external discovery channel)",
+        "phase": "Immediate (Q4 2026)",
+        "evidence": "Live `/.well-known/security.txt` URLs; PSIRT Ticketing Ingestion Logs; Automated acknowledgment audit records.",
+        "dependencies": "Web server configuration, PSIRT ticketing integration (Jira Service Management)."
+    },
+    {
+        "id": "CRA-GAP-GOV-04",
+        "req_id": "CRA-REQ-MGT-06",
+        "gap": "No immutable, long-term binary storage repository is currently maintained to retain released security updates for at least 10 years after market placement as mandated by Art 13(9).",
+        "risk": "Inability to provide historical security patches to legacy systems operating in customer environments; violation of Art 13(9).",
+        "control": "Provision an immutable WORM (Write Once, Read Many) cloud storage repository (e.g. AWS S3 Object Lock / Azure Immutable Blob) integrated with release pipelines to store all compiled updates for 10 years.",
+        "owner": "Release Engineering Lead, Cloud Infrastructure Architect",
+        "priority": "High (Technical architecture must be established before product release)",
+        "phase": "Build and Release / Deployment (Q2 2027)",
+        "evidence": "Immutable Storage Configuration Audit; Automated Archiving Pipeline Scripts; 10-Year Retention Policy Verification Record.",
+        "dependencies": "Cloud infrastructure budget, CI/CD artifact publication pipeline."
+    },
+    {
+        "id": "CRA-GAP-GOV-05",
+        "req_id": "CRA-REQ-VULN-08",
+        "gap": "Commercial software licensing models and release branching currently bundle security bug fixes into paid feature upgrades, violating the mandate that security updates be provided free of charge and decoupled from feature upgrades.",
+        "risk": "Breach of Annex I, Part II, point (8); customer disputes; regulatory investigation by market surveillance authorities.",
+        "control": "Restructure Git release branching into dual-track LTS branches (security-only maintenance vs feature releases); amend commercial master service agreements guaranteeing free security patches throughout support period.",
+        "owner": "Lead Software Architect, Product VP, General Counsel",
+        "priority": "High (Requires both technical branching refactoring and commercial contract updates)",
+        "phase": "Development / Build (Q2 2027)",
+        "evidence": "Dual-Track Release Branching Specification; Updated Commercial Contract Templates; Free Security Update Verification Record.",
+        "dependencies": "Software engineering branching model, commercial sales contract revision."
+    },
+    {
+        "id": "CRA-GAP-GOV-06",
+        "req_id": "CRA-REQ-MGT-03",
+        "gap": "Lack of an established operational procedure to report vulnerabilities discovered in integrated third-party or open-source components back to upstream maintainers and share patches.",
+        "risk": "Violation of Article 13(6); open source community friction; missed opportunity to eliminate systemic supply chain vulnerabilities.",
+        "control": "Establish an Upstream Vulnerability Disclosure & Contribution SOP in the Open Source Program Office (OSPO) / PSIRT; maintain tracking logs of upstream responsible disclosures.",
+        "owner": "OSPO Lead, PSIRT Lead, Senior Software Engineers",
+        "priority": "Medium (Important ecosystem reciprocity duty; manageable process)",
+        "phase": "Development / Maintenance (Q2 2027)",
+        "evidence": "Upstream Disclosure SOP; Log of Disclosed Vulnerabilities to Upstream Projects; Upstream Pull Request & Patch Records.",
+        "dependencies": "PSIRT vulnerability triage, corporate open source contribution policy."
+    },
+    {
+        "id": "CRA-GAP-DOC-01",
+        "req_id": "CRA-REQ-DOC-01",
+        "gap": "Scanning tools generate isolated technical test reports, but no centralized framework or process exists to compile and maintain the formal Annex VII Technical Documentation Dossier.",
+        "risk": "Inability to complete conformity assessment or obtain CE marking; market placement prohibited under Art 13(11) and Art 31.",
+        "control": "Implement an Annex VII Technical Documentation Management System: define templates covering all 11 mandatory Annex VII elements, automate evidence aggregation from CI/CD and risk assessments, and establish a formal Engineering Approval Gate.",
+        "owner": "Regulatory Compliance Lead, Product Security Architect, Technical Writer",
+        "priority": "Critical (Mandatory legal prerequisite for CE marking and Union market access)",
+        "phase": "Development / Deployment (Q2–Q3 2027)",
+        "evidence": "Completed Annex VII Technical Documentation Dossier; Engineering Gate Sign-off Protocol; Document Management Vault.",
+        "dependencies": "Risk assessment, test reports, SBOM generation, user instructions."
+    },
+    {
+        "id": "CRA-GAP-DOC-02",
+        "req_id": "CRA-REQ-DOC-03",
+        "gap": "Customer-facing documentation lacks the mandatory cybersecurity parameters, secure installation guidance, explicit end-of-support dates, and vulnerability contact points required by Annex II.",
+        "risk": "Product non-conformity at customs or market surveillance inspection; user misconfiguration leading to security incidents; Art 13(18) violations.",
+        "control": "Author a dedicated Annex II Customer Security & Hardening Guide: integrate product security properties, minimum system requirements, secure commissioning steps, explicit support period end date, and CVD contact details.",
+        "owner": "Lead Technical Writer, Product Security Architect, Product Manager",
+        "priority": "High (Required deliverable accompanying every product placed on the market)",
+        "phase": "Deployment and Delivery (Q3 2027)",
+        "evidence": "Annex II Customer Security Guide; Packaging Leaflet / E-Label Proofs; Translation Certification Records in required EU languages.",
+        "dependencies": "Hardening baseline, support period determination, CVD intake contact."
+    },
+    {
+        "id": "CRA-GAP-DOC-03",
+        "req_id": "CRA-REQ-DOC-02",
+        "gap": "Absence of a corporate compliance archiving policy and tamper-evident repository guaranteeing 10-year retention of technical dossiers, test logs, and EU Declarations of Conformity following market placement.",
+        "risk": "Inability to defend conformity during retrospective market surveillance audits; fines under Art 64(3) up to €10,000,000 or 2% of turnover.",
+        "control": "Establish a Corporate Regulatory Compliance Archive with immutable storage, strict 10-year retention schedules, and annual audit retrieval drills.",
+        "owner": "Corporate Compliance Officer, Legal Counsel, Archivist",
+        "priority": "High (Statutory records retention duty under Art 13(12) and Art 31(3))",
+        "phase": "Deployment and Delivery (Q3 2027)",
+        "evidence": "Compliance Archiving Policy; 10-Year Retention Schedule Audit Record; Annual Retrieval Drill Protocol.",
+        "dependencies": "Enterprise Document Management System, Legal records policy."
+    },
+    {
+        "id": "CRA-GAP-CONF-01",
+        "req_id": "CRA-REQ-CONF-01",
+        "gap": "Product classification under Annex III and Implementing Regulation (EU) 2025/2392 has not been formally conducted; risk of misclassifying an Important Class I/II product as Default, missing required Notified Body conformity assessments.",
+        "risk": "Invalid CE mark; product impounded or recalled from EU market; severe executive liability for non-compliant market placement.",
+        "control": "Conduct formal CRA Product Classification Review: evaluate core product functionalities against Annex III Class I/II categories and IR 2025/2392; if Class I/II, select conformity route (Module B+C or H) and immediately issue RFP to accredited Notified Bodies.",
+        "owner": "Lead Security Architect, Compliance Officer, General Counsel",
+        "priority": "Critical (Notified Bodies have 6-12 month lead times; delays halt product release)",
+        "phase": "Presales and Product Planning (Q1 2027)",
+        "evidence": "Formal Product Classification Assessment Record; Notified Body Engagement Agreement / Proposal; Conformity Assessment Plan.",
+        "dependencies": "Product functionality specifications, marketing claims review."
+    },
+    {
+        "id": "CRA-GAP-CONF-02",
+        "req_id": "CRA-REQ-CONF-02",
+        "gap": "No governance workflow or executive signatory authorization matrix exists to draw up, execute, and maintain the legally binding EU Declaration of Conformity (DoC) under Annex V.",
+        "risk": "Product cannot legally carry CE mark or be placed on market; personal legal liability for unauthorized or defective declarations.",
+        "control": "Implement an EU Declaration of Conformity Authoring SOP: establish board-level signatory authorization, verify alignment with Annex VII technical documentation, and ensure multi-directive consolidation (CRA, RED, Machinery).",
+        "owner": "Executive Board, General Counsel, Regulatory Affairs Lead",
+        "priority": "Critical (Mandatory legal prerequisite for placing product on market)",
+        "phase": "Deployment and Delivery (Q3 2027)",
+        "evidence": "Signed EU Declaration of Conformity (PDF); Executive Signatory Authorization Board Resolution; DoC Verification Checklist.",
+        "dependencies": "Completed conformity assessment, Annex VII technical dossier."
+    },
+    {
+        "id": "CRA-GAP-CONF-03",
+        "req_id": "CRA-REQ-CONF-03",
+        "gap": "Packaging artwork, product rating plates, and software UI splash screens lack compliant CE marking, traceability numbers, and manufacturer contact identification.",
+        "risk": "Customs impoundment; product non-conformity citations by national market surveillance authorities under Art 13(15)–(17).",
+        "control": "Audit and update physical packaging artwork, hardware rating labels, and software UI 'About' screens to include the CE mark (≥5mm height), batch/serial numbers, manufacturer postal address, and single contact point.",
+        "owner": "Packaging Design Lead, Software UI Lead, Quality Manager",
+        "priority": "High (Physical packaging and software release gating requirement)",
+        "phase": "Deployment and Delivery (Q3 2027)",
+        "evidence": "Approved Artwork Proofs; UI 'About' Screen Verification Screenshots; Physical Rating Plate Durability Test Records.",
+        "dependencies": "Packaging engineering, software UI release sprint."
+    },
+    {
+        "id": "CRA-GAP-CONF-04",
+        "req_id": "CRA-REQ-CONF-04",
+        "gap": "Engineering Change Advisory Board (CAB) lacks a regulatory gating filter to evaluate whether post-market feature updates constitute a 'substantial modification' under Art 3(30), triggering new conformity assessments.",
+        "risk": "Releasing a substantially modified update without new conformity assessment turns the update into an illegal market placement under Art 21/22.",
+        "control": "Integrate a Substantial Modification Screening Gate into the CAB: evaluate all major functional releases against Art 3(30) risk delta criteria; route substantial changes to updated risk assessments and conformity reviews.",
+        "owner": "CAB Chair, Lead Security Architect, Compliance Officer",
+        "priority": "High (Critical change management control for ongoing product evolution)",
+        "phase": "Maintenance and RUN (Q2 2027)",
+        "evidence": "CAB Substantial Modification Assessment Checklist; Change Screening Records; Updated Conformity Dossiers.",
+        "dependencies": "Jira change management workflow, architecture review board."
+    },
+    {
+        "id": "CRA-GAP-TECH-01",
+        "req_id": "CRA-REQ-VULN-07",
+        "gap": "Software and firmware update packages are currently distributed without hardware-backed cryptographic code signing (HSM) or client-side anti-rollback / anti-downgrade enforcement.",
+        "risk": "Update channel hijacking; malicious update injection; rollback attacks forcing devices to execute known vulnerable firmware versions; violation of Annex I Part II point (7).",
+        "control": "Deploy enterprise automated code signing integrated with a Hardware Security Module (HSM) or cloud KMS (Sigstore/Cosign); implement client-side cryptographic signature checks and monotonic counter anti-downgrade fuses.",
+        "owner": "DevSecOps Lead, Platform Security Architect, Firmware Lead",
+        "priority": "Critical (Update pipeline compromise represents maximum systemic risk)",
+        "phase": "Build and Release / Deployment (Q1–Q2 2027)",
+        "evidence": "Code Signing Architecture Specification; HSM Key Custody Audit Logs; Anti-Downgrade Firmware Verification Test Records.",
+        "dependencies": "HSM infrastructure, client-side bootloader/daemon update logic."
+    },
+    {
+        "id": "CRA-GAP-TECH-02",
+        "req_id": "CRA-REQ-TECH-03",
+        "gap": "Product update mechanism does not support automated background installation of security patches by default, or lacks clear user notifications and opt-out controls.",
+        "risk": "Non-compliance with Annex I, Part I, point (2)(c); low customer patch adoption leaving fleets vulnerable to automated exploitation.",
+        "control": "Engineer background update daemon supporting automatic security updates by default; implement user notification UI/CLI with configurable opt-out toggles and dual-partition rollback resilience.",
+        "owner": "Platform Architect, Firmware Lead, UX Designer",
+        "priority": "High (Technical requirement under Annex I Part I point (2)(c))",
+        "phase": "Development / Build (Q2 2027)",
+        "evidence": "Automatic Update Architecture Spec; Dual-Partition Rollback Test Report; User Opt-Out Configuration Test Record.",
+        "dependencies": "Client platform architecture, OTA distribution backend."
+    },
+    {
+        "id": "CRA-GAP-TECH-03",
+        "req_id": "CRA-REQ-TECH-13",
+        "gap": "Product lacks an accessible, verified cryptographic data sanitization and factory decommissioning routine to permanently wipe user data, keys, and cloud bindings before disposal or transfer.",
+        "risk": "Data leakage upon device decommissioning or return; violation of Annex I Part I point (2)(m) and GDPR right to erasure.",
+        "control": "Implement NIST SP 800-88 Rev. 1 compliant cryptographic erasure routine: overwrite storage, destroy cryptographic master keys, and de-register associated cloud endpoints upon user factory reset.",
+        "owner": "Embedded Firmware Lead, Cloud Backend Architect",
+        "priority": "Medium (Mandatory decommissioning control under Annex I)",
+        "phase": "Development / Build (Q2 2027)",
+        "evidence": "Data Sanitization Architecture Document; NIST SP 800-88 Purge Verification Test Report; Decommissioning User Instructions.",
+        "dependencies": "Flash storage controller driver, cloud tenant de-provisioning API."
+    },
+    {
+        "id": "CRA-GAP-SUP-01",
+        "req_id": "CRA-REQ-SUP-01",
+        "gap": "Commercial partner contracts with distributors, resellers, and system integrators lack mandatory CRA compliance clauses, distributor verification covenants, and modification restrictions.",
+        "risk": "Uncontrolled distributor modifications converting partners into manufacturers under Art 21; distributor supply of non-compliant units creating joint liability under Arts 17–20.",
+        "control": "Draft and execute CRA Commercial Partner Addenda across all distribution agreements: establish distributor inspection checklists, require preservation of CE markings, and prohibit unauthorized software alterations.",
+        "owner": "Supply Chain Director, Partner Operations VP, Legal Counsel",
+        "priority": "High (Secures the downstream commercial distribution chain)",
+        "phase": "Deployment and Delivery (Q2 2027)",
+        "evidence": "Executed CRA Distributor Agreement Addenda; Partner Compliance Checklist Records; Inbound/Outbound Inspection Logs.",
+        "dependencies": "Channel sales agreements, partner management portal."
+    }
+]
+
+with open('gaps_roadmap.json', 'w') as f:
+    json.dump(gaps_roadmap, f, indent=2)
+
+print(f"Gaps and roadmap saved: {len(gaps_roadmap)} compliance gaps.")

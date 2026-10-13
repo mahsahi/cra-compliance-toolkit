@@ -1,0 +1,25 @@
+{
+  "evaluation_timestamp": "2026-10-12T11:35:13.120394+00:00",
+  "in_scope": true,
+  "exclusion_reason": null,
+  "role_archetype": "Archetype A (Proprietary Manufacturer)",
+  "archetype_description": "Organization designs, builds, and places product on market under own brand (Articles 13 & 14).",
+  "product_tier": "Important Class I (Annex III)",
+  "conformity_route": "Annex VIII Module A (if EN harmonised standards applied in full) OR Notified Body Module B+C",
+  "statutory_support_floor_years": 5,
+  "bid_support_years": 5,
+  "support_compliance": true,
+  "gating_decision": "APPROVED (STANDARD MANUFACTURER SSDLC)",
+  "risk_factors": [
+    "Standards Dependency: If harmonised standards not fully applied, Notified Body engagement required."
+  ],
+  "required_actions": [
+    "Execute automated CycloneDX SBOM generation in CI/CD pipeline.",
+    "Register product on ENISA Single Reporting Platform roster.",
+    "Attach CRA Schedule A Addendum to Master Services Agreement."
+  ],
+  "bid_cost_implications": [
+    "Full SSDLC, SBOM, Annex VII documentation, and Article 14 24/7 on-call budgeting.",
+    "Budget for CEN/CENELEC/ETSI standard compliance audit."
+  ]
+}

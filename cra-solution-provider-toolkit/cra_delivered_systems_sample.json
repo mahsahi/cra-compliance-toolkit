@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "registry_version": "1.0",
+  "business_unit": "MYBU",
+  "updated_utc": "2026-10-12T16:00:00Z",
+  "systems": [
+    {
+      "system_id": "SYS-MYBU-SEG5000",
+      "commercial_name": "SecureEdge Gateway 5000 (SEG-5000)",
+      "cra_risk_tier": "default",
+      "manufacturer_entity": "Technology Solutions Europe B.V.",
+      "legal_entity_vat": "NL882947102B01",
+      "lead_csirt": "CSIRT-IE",
+      "market_placement_date": "2024-03-15",
+      "support_end_date": "2029-03-15",
+      "current_firmware_version": "v3.4.0",
+      "sbom_uri": "s3://cra-sbom-vault/seg-5000/v3.4.0/seg5000-v3.4.0.cdx.json",
+      "member_states_deployed": ["DE", "FR", "NL", "IT", "ES", "SE"],
+      "customers": [
+        {
+          "customer_name": "AutoMotion Dynamics GmbH",
+          "deployment_id": "DEP-DE-AM-0192",
+          "country": "DE",
+          "installed_firmware": "v3.4.0",
+          "emergency_contact": "soc-emergency@automotion.de"
+        },
+        {
+          "customer_name": "AeroLogistics SAS",
+          "deployment_id": "DEP-FR-AL-0044",
+          "country": "FR",
+          "installed_firmware": "v3.3.9",
+          "emergency_contact": "cert@aerologistics.fr"
+        }
+      ],
+      "external_interfaces": [
+        { "port": 8443, "protocol": "HTTPS", "service": "Admin Portal & Telemetry Ingestion" },
+        { "port": 8883, "protocol": "MQTTS", "service": "Edge Sensor Telemetry Broker" }
+      ],
+      "responsible_blco": "Marcus van den Berg (marcus.vandenberg@techsolutions.eu)",
+      "technical_psirt_lead": "Elena Rostova (elena.rostova@techsolutions.eu)"
+    },
+    {
+      "system_id": "SYS-MYBU-STH400",
+      "commercial_name": "SmartEdge Telemetry Hub 400 (STH-400)",
+      "cra_risk_tier": "default",
+      "manufacturer_entity": "Technology Solutions Europe B.V.",
+      "legal_entity_vat": "NL882947102B01",
+      "lead_csirt": "CSIRT-IE",
+      "market_placement_date": "2025-06-01",
+      "support_end_date": "2030-06-01",
+      "current_firmware_version": "v1.2.0",
+      "sbom_uri": "s3://cra-sbom-vault/sth-400/v1.2.0/sth400-v1.2.0.cdx.json",
+      "member_states_deployed": ["NL", "BE", "DE"],
+      "customers": [
+        {
+          "customer_name": "Rotterdam Port Automation N.V.",
+          "deployment_id": "DEP-NL-RPA-081",
+          "country": "NL",
+          "installed_firmware": "v1.2.0",
+          "emergency_contact": "sec-ops@rpa-net.nl"
+        }
+      ],
+      "external_interfaces": [
+        { "port": 443, "protocol": "HTTPS", "service": "API Gateway" }
+      ],
+      "responsible_blco": "Marcus van den Berg (marcus.vandenberg@techsolutions.eu)",
+      "technical_psirt_lead": "Elena Rostova (elena.rostova@techsolutions.eu)"
+    }
+  ]
+}

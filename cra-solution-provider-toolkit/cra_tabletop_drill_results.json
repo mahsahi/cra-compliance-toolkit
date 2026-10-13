@@ -1,0 +1,73 @@
+{
+  "drill_id": "DRILL-2026-CRA-ALPHA",
+  "exercise_name": "Operation DarkFrame",
+  "timestamp_utc": "2026-10-12T14:44:35Z",
+  "scenario_metadata": {
+    "drill_id": "DRILL-2026-CRA-ALPHA",
+    "exercise_name": "Operation DarkFrame",
+    "scenario_type": "actively_exploited_vulnerability",
+    "target_product": "SecureEdge Gateway 5000 (SEG-5000)",
+    "affected_firmware": "v3.4.0",
+    "vulnerability_cve": "CVE-2026-49120",
+    "vulnerability_type": "Heap-based Buffer Overflow (CWE-122) in netframed port 8443",
+    "cvss_score": 10.0,
+    "lead_csirt": "CSIRT-IE (Ireland)"
+  },
+  "evaluation": {
+    "score": 60,
+    "max_score": 60,
+    "percentage": 100.0,
+    "outcome": "pass",
+    "audit_certified": true
+  },
+  "steps": [
+    {
+      "inject_id": 1,
+      "title": "Threat Intelligence Alert & Telemetry Ingress",
+      "simulated_clock": "Day 1, 08:00 CET (T+00:00)",
+      "decision_selected": "B",
+      "compliant": true,
+      "rationale": "Correct statutory application: Legal awareness requires confirmation of both a product vulnerability AND active exploitation in the wild (Article 14(2))."
+    },
+    {
+      "inject_id": 2,
+      "title": "Lead CSIRT Statutory Jurisdiction Determination",
+      "simulated_clock": "Day 1, 10:30 CET (T+02:30)",
+      "decision_selected": "B",
+      "compliant": true,
+      "rationale": "Correct: Article 14(7) establishes jurisdiction based on the manufacturer's Main Establishment. CSIRT-IE coordinates with affected CSIRTs (BSI, ANSSI) via ENISA SRP."
+    },
+    {
+      "inject_id": 3,
+      "title": "Article 14(2)(a) 24-Hour Early Warning & Delayed Dissemination",
+      "simulated_clock": "Day 1, 20:00 CET (T+12:00)",
+      "decision_selected": "B",
+      "compliant": true,
+      "rationale": "Correct: Delegated Regulation (EU) 2026/881 empowers manufacturers to request delayed dissemination to protect systemic cybersecurity during patch engineering."
+    },
+    {
+      "inject_id": 4,
+      "title": "CVD Intake Coordination & Ethical Researcher Safe Harbor",
+      "simulated_clock": "Day 2, 14:00 CET (T+28:00)",
+      "decision_selected": "B",
+      "compliant": true,
+      "rationale": "Correct: ISO/IEC 29147 standard practice; preserves legal safe harbor, coordinates disclosure date, and protects customers."
+    },
+    {
+      "inject_id": 5,
+      "title": "Article 14(8) Proportional Customer Security Advisory",
+      "simulated_clock": "Day 2, 18:00 CET (T+32:00)",
+      "decision_selected": "B",
+      "compliant": true,
+      "rationale": "Correct: Article 14(8) mandates proportional user notification providing actionable mitigations without assisting malicious attackers."
+    },
+    {
+      "inject_id": 6,
+      "title": "Hotfix Engineering, Upstream Sharing (Art 13(6)) & Final Report",
+      "simulated_clock": "Day 5, 12:00 CET (T+98:00)",
+      "decision_selected": "B",
+      "compliant": true,
+      "rationale": "Correct: Fully satisfies Annex I Part II(2) free updates, Article 13(6) upstream sharing, Annex I Part II(6) CSAF advisories, and Article 14(2)(c) Final Report."
+    }
+  ]
+}

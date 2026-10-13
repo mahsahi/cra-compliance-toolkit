@@ -1,0 +1,98 @@
+{
+  "document": {
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "title": "Security Update for Buffer Overflow in SEG-5000",
+    "tracking": {
+      "id": "COMPANY-SA-2026-001",
+      "current_release_date": "2026-10-12T14:31:54.000Z",
+      "initial_release_date": "2026-10-12T14:31:54.000Z",
+      "status": "final",
+      "version": "1.0.0",
+      "generator": {
+        "engine": {
+          "name": "CRA CSAF Advisory Tool",
+          "version": "1.0.0"
+        }
+      }
+    },
+    "publisher": {
+      "category": "vendor",
+      "name": "SecureEdge Technologies",
+      "namespace": "https://www.secureedgetechnologies.com",
+      "contact_details": "security@secureedgetechnologies.com"
+    },
+    "notes": [
+      {
+        "category": "summary",
+        "title": "Advisory Summary",
+        "text": "A remote heap buffer overflow vulnerability exists in the network framing parser."
+      },
+      {
+        "category": "legal_disclaimer",
+        "title": "CRA Regulatory Notice",
+        "text": "This security advisory is issued pursuant to Regulation (EU) 2024/2847 (Cyber Resilience Act), Annex I, Part II, Point 6."
+      }
+    ],
+    "references": [
+      {
+        "category": "self",
+        "summary": "Canonical Security Advisory URL",
+        "url": "https://www.secureedgetechnologies.com/security/advisories/COMPANY-SA-2026-001"
+      }
+    ]
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "SecureEdge Technologies",
+        "branches": [
+          {
+            "category": "product_name",
+            "name": "SEG-5000 Firmware",
+            "product": {
+              "name": "SEG-5000 Firmware < 3.4.1",
+              "product_id": "CSAFPID-SEG-5000-FIRMWARE-3.4.1",
+              "product_identification_helper": {
+                "cpe": "cpe:2.3:o:secureedge:seg-5000_firmware:*:*:*:*:*:*:*:*"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "cve": "CVE-2026-49120",
+      "title": "Security Update for Buffer Overflow in SEG-5000",
+      "cwe": {
+        "id": "CWE-122",
+        "name": "Heap-based Buffer Overflow"
+      },
+      "scores": [
+        {
+          "cvss_v3": {
+            "version": "3.1",
+            "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+            "baseScore": 9.6,
+            "baseSeverity": "CRITICAL"
+          }
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "CSAFPID-SEG-5000-FIRMWARE-3.4.1"
+        ]
+      },
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "details": "Upgrade SEG-5000 Firmware to version 3.4.1 or later. Pursuant to CRA Annex I Part II(2), this security update is provided free of charge.",
+          "url": "https://download.secureedge.com/updates/SEG-5000-v3.4.1.bin"
+        }
+      ]
+    }
+  ]
+}

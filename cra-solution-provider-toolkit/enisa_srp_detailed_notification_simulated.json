@@ -1,0 +1,41 @@
+{
+  "report_type": "article_14_2_b_detailed_notification",
+  "statutory_basis": "Regulation (EU) 2024/2847, Article 14(2)(b)",
+  "submission_timestamp": "2026-10-14T14:00:00Z",
+  "early_warning_reference": "SRP-EW-2026-IE-00842",
+  "manufacturer": {
+    "name": "SecureEdge Technologies Ltd",
+    "lead_csirt": "CSIRT-IE"
+  },
+  "technical_details": {
+    "cve_id": "CVE-2026-49120",
+    "cwe_id": "CWE-122",
+    "cwe_name": "Heap-based Buffer Overflow",
+    "cvss_v3_1": {
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+      "base_score": 10.0,
+      "severity": "CRITICAL"
+    },
+    "root_cause": "Integer truncation on packet frame header parsing in parse_frame_header() function leading to undersized buffer allocation followed by unchecked memcpy() of payload data.",
+    "exploit_vector": "Remote network exploitation via listening port 8443. Threat actors transmit malformed fragmented JSON payloads to trigger memory corruption and achieve arbitrary root execution."
+  },
+  "impact_assessment": {
+    "estimated_affected_devices_eu": 8400,
+    "confirmed_compromised_devices": 14,
+    "targeted_sectors": [
+      "Automotive Manufacturing",
+      "Renewable Energy Distribution",
+      "Industrial Logistics"
+    ]
+  },
+  "mitigation_status": {
+    "workaround_published": true,
+    "workaround_details": "Customer advisory ADV-2026-0042 published via secure portal on 2026-10-13T13:00:00Z recommending immediate firewall blocking of port 8443 on external interfaces.",
+    "patch_availability_target": "2026-10-16T12:00:00Z",
+    "patch_version": "v3.4.1"
+  },
+  "sensitivity_grading": {
+    "traffic_light_protocol": "TLP:AMBER+STRICT",
+    "distribution_restriction": "Restricted strictly to CSIRT-IE, ENISA, and designated CSIRTs of affected Member States (DE, FR, NL)."
+  }
+}

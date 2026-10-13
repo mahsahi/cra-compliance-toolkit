@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "drill_id": "DRILL-2026-CRA-01",
+  "scenario_type": "actively_exploited_vulnerability",
+  "scenario": "Simulated zero-day remote code execution vulnerability in Edge Gateway management API actively exploited in the wild.",
+  "fictional": true,
+  "detection_timestamp": "2026-10-12T08:00:00+02:00",
+  "awareness_timestamp": "2026-10-12T10:00:00+02:00",
+  "awareness_reasoning": "Technical verification confirmed vulnerable code path is reachable in customer-deployed firmware v3.1 and anomalous exploitation attempts match threat intel telemetry.",
+  "csirt_endpoint": "CSIRT-IE (Ireland National CSIRT)",
+  "csirt_determination_basis": "Main establishment where cybersecurity R&D and operational decisions are predominantly taken (Article 14(7)).",
+  "deadlines": {
+    "early_warning_due": "2026-10-13T10:00:00+02:00",
+    "notification_due": "2026-10-15T10:00:00+02:00",
+    "final_report_due": "2026-10-27T10:00:00+02:00",
+    "final_report_rule": "No later than 14 days after a corrective or mitigating measure is available (Article 14(2)(c))."
+  },
+  "steps": [
+    {
+      "step": "Prompt Initial Assessment and Awareness Logging",
+      "planned_by": "2026-10-12T11:00:00+02:00",
+      "completed_at": "2026-10-12T10:00:00+02:00",
+      "on_time": true,
+      "notes": "Awareness log signed by Incident Commander within 2 hours of detection."
+    },
+    {
+      "step": "Draft Article 14(2)(a) Early Warning Dossier",
+      "planned_by": "2026-10-12T20:00:00+02:00",
+      "completed_at": "2026-10-12T18:30:00+02:00",
+      "on_time": true,
+      "notes": "Affected Member States collated (DE, FR, IE, NL). Delayed dissemination requested under Reg (EU) 2026/881."
+    },
+    {
+      "step": "Simulated ENISA SRP Early Warning Submission",
+      "planned_by": "2026-10-13T06:00:00+02:00",
+      "completed_at": "2026-10-12T22:00:00+02:00",
+      "on_time": true,
+      "notes": "Simulated submission completed 12 hours ahead of 24h statutory limit."
+    },
+    {
+      "step": "Draft Article 14(8) Proportional Customer Security Advisory (CSAF 2.0)",
+      "planned_by": "2026-10-13T18:00:00+02:00",
+      "completed_at": "2026-10-13T16:00:00+02:00",
+      "on_time": true,
+      "notes": "Workaround instructions prepared for enterprise customers to restrict port 8443."
+    },
+    {
+      "step": "Draft Article 14(2)(b) Detailed Notification Dossier",
+      "planned_by": "2026-10-14T18:00:00+02:00",
+      "completed_at": "2026-10-14T14:00:00+02:00",
+      "on_time": true,
+      "notes": "CVE identifier assigned, CVSS v3.1 vector calculated (9.8 Critical), sensitivity graded TLP:AMBER+STRICT."
+    },
+    {
+      "step": "Simulated ENISA SRP Detailed Notification Submission",
+      "planned_by": "2026-10-15T06:00:00+02:00",
+      "completed_at": "2026-10-14T20:00:00+02:00",
+      "on_time": true,
+      "notes": "Simulated submission completed 14 hours ahead of 72h statutory limit."
+    },
+    {
+      "step": "Security Patch Deployment and T_FIX Recording",
+      "planned_by": "2026-10-17T12:00:00+02:00",
+      "completed_at": "2026-10-16T15:00:00+02:00",
+      "on_time": true,
+      "notes": "Firmware hotfix v3.1.1 published with SHA-256 signatures."
+    },
+    {
+      "step": "Simulated ENISA SRP 14-Day Final Report Submission",
+      "planned_by": "2026-10-27T10:00:00+02:00",
+      "completed_at": "2026-10-22T11:00:00+02:00",
+      "on_time": true,
+      "notes": "Final post-mortem and threat analysis submitted 5 days ahead of 14-day limit."
+    }
+  ],
+  "user_information_step": "Customer advisory ADV-2026-001 distributed via authenticated portal within 30 hours of awareness.",
+  "outcome": "pass",
+  "findings": [
+    "PAR and SAR delegation rota functioned with zero friction during simulated off-hours escalation.",
+    "Customer portal automated CSAF distribution requires integration with SIEM webhook in Q1 2027."
+  ],
+  "participants": [
+    "Chief Information Security Officer (Incident Commander)",
+    "Product Security Engineering Lead (Technical Investigator)",
+    "Lead Solutions Architect (Product Scope Lead)",
+    "General Counsel (Regulatory Compliance Lead)"
+  ]
+}

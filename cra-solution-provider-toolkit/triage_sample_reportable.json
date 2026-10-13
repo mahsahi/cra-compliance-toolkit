@@ -1,0 +1,36 @@
+{
+  "event_id": "EVT-2026-MYBU-0042",
+  "product_name": "SecureEdge Gateway 5000",
+  "business_unit": "MYBU",
+  "lead_csirt": "CSIRT-IE",
+  "t0_arrival_utc": "2026-10-12T14:00:00+02:00",
+  "triage_completed_utc": "2026-10-12T17:10:26.951308+02:00",
+  "questions_evaluated": {
+    "q1_product_supplied": true,
+    "q2_manufacturer_entity": true,
+    "q3_vulnerability_actively_exploited": true,
+    "q4_vulnerability_exploitable_in_our_build": true,
+    "q5_severe_incident_or_malicious_code": null
+  },
+  "determination": {
+    "reportable": true,
+    "governing_branch": "vulnerability",
+    "legal_basis": "Regulation (EU) 2024/2847 Art. 14(2)",
+    "findings_summary": [],
+    "q4_non_exploitability_justification": null
+  },
+  "statutory_timelines": {
+    "internal_early_warning_target_20h": "2026-10-13T10:00:00+02:00",
+    "statutory_early_warning_srp_24h": "2026-10-13T14:00:00+02:00",
+    "statutory_customer_advisory_24h": "2026-10-13T14:00:00+02:00",
+    "statutory_detailed_notification_srp_72h": "2026-10-15T14:00:00+02:00",
+    "final_report_rule": "T+14 calendar days from hotfix OR workaround release"
+  },
+  "mandatory_next_actions": [
+    "[INTERNAL] File Early Warning to ENISA SRP before internal buffer: 2026-10-13T10:00:00+02:00",
+    "[STATUTORY \u2696\ufe0f] ENISA SRP Early Warning hard cliff: 2026-10-13T14:00:00+02:00",
+    "[STATUTORY \u2696\ufe0f] Disseminate Article 14(8) Proportional Customer Security Advisory: 2026-10-13T14:00:00+02:00",
+    "[STATUTORY \u2696\ufe0f] Submit 72-Hour Detailed Notification: 2026-10-15T14:00:00+02:00",
+    "[AUDIT] Retain T0 email headers, triage record, and SRP screenshots for 10 years in WORM vault"
+  ]
+}

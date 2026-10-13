@@ -1,0 +1,13 @@
+# RFC 9116 Coordinated Vulnerability Disclosure Specification
+# EU Cyber Resilience Act (Regulation (EU) 2024/2847) Compliance
+# Generated: 2026-10-12T14:31:23Z
+
+Contact: mailto:security@example.com
+Contact: https://example.com/security/report
+Expires: 2027-10-12T14:31:23.000Z
+Encryption: https://example.com/security/pgp.asc
+Preferred-Languages: en, fr, de
+Canonical: https://example.com/.well-known/security.txt
+Policy: https://example.com/security/cvd-policy
+CSAF: https://example.com/.well-known/csaf/provider-metadata.json
+Acknowledgments: https://example.com/security/hall-of-fame

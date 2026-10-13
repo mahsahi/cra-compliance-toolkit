@@ -1,0 +1,21 @@
+{
+  "@context": "https://openvex.dev/ns/v0.2.0",
+  "@id": "https://openvex.io/doc/2026/VEX-2026-001",
+  "author": "PSIRT Regulatory Office",
+  "role": "Product Security Incident Response Team",
+  "timestamp": "2026-10-12T14:31:54.000Z",
+  "version": 1,
+  "statements": [
+    {
+      "vulnerability": {
+        "name": "CVE-2026-49120"
+      },
+      "products": [
+        {
+          "@id": "pkg:generic/secureedge/seg-5000@3.4.1"
+        }
+      ],
+      "status": "fixed"
+    }
+  ]
+}

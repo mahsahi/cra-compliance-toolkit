@@ -1,0 +1,36 @@
+{
+  "report_type": "article_14_2_c_final_report",
+  "statutory_basis": "Regulation (EU) 2024/2847, Article 14(2)(c)",
+  "submission_timestamp": "2026-10-21T09:00:00Z",
+  "early_warning_reference": "SRP-EW-2026-IE-00842",
+  "detailed_notification_reference": "SRP-DN-2026-IE-00124",
+  "mitigation_release_timestamp": "2026-10-16T10:00:00Z",
+  "final_report_statutory_due": "2026-10-30T10:00:00Z",
+  "manufacturer": {
+    "name": "SecureEdge Technologies Ltd",
+    "lead_csirt": "CSIRT-IE"
+  },
+  "post_incident_findings": {
+    "cve_id": "CVE-2026-49120",
+    "corrective_action_executed": "Firmware hotfix v3.4.1 released globally on 2026-10-16T10:00:00Z free of charge via secure Over-The-Air (OTA) delivery and download portal.",
+    "patch_verification": "AddressSanitizer and Valgrind regression suites executed; Ed25519 cryptographic signatures verified on all target hardware.",
+    "patch_adoption_rate_t_plus_5d": "82.4% of connected gateways successfully updated to v3.4.1 as of 2026-10-21.",
+    "upstream_sharing_compliance": {
+      "statutory_basis": "Regulation (EU) 2024/2847, Article 13(6)",
+      "upstream_component": "libframenet v1.2.4",
+      "upstream_action": "Sanitized patch submitted to project maintainers on 2026-10-16T15:00:00Z; merged in upstream v1.2.5 release."
+    },
+    "public_advisory_publication": {
+      "statutory_basis": "Regulation (EU) 2024/2847, Annex I Part II(6) & (7)",
+      "csaf_2_0_url": "https://www.secureedge.com/.well-known/csaf/2026/COMPANY-SA-2026-0042.json",
+      "openvex_url": "https://www.secureedge.com/security/vex/2026/COMPANY-VEX-2026-0042.json",
+      "security_bulletin_url": "https://www.secureedge.com/security/advisories/ADV-2026-0042"
+    }
+  },
+  "incident_closure_signoff": {
+    "status": "CLOSED_RESOLVED",
+    "incident_commander": "CISO, SecureEdge Technologies Ltd",
+    "regulatory_counsel": "General Counsel, SecureEdge Technologies Ltd",
+    "lead_csirt_acknowledgment": "CSIRT-IE Reference # CSIRT-IE-INC-2026-4912"
+  }
+}

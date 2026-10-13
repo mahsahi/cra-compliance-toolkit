@@ -1,0 +1,61 @@
+name: CRA Build Pipeline Quality Gate
+
+on:
+  push:
+    branches: [ "main", "release/*" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  cra-compliance-gate:
+    name: CRA Annex II SBOM & Article 14 Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install CRA Quality Tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install pip-audit cyclonedx-bom
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+      - name: Execute CRA CI/CD Quality Gate
+        id: cra_gate
+        run: |
+          python3 /root/cra_ci_pipeline_gate.py \
+            --repo . \
+            --output-dir build/cra-artifacts \
+            --fail-on CRITICAL
+        continue-on-error: false
+
+      - name: Publish Step Summary
+        if: always()
+        run: |
+          if [ -f build/cra-artifacts/cra_gate_summary.md ]; then
+            cat build/cra-artifacts/cra_gate_summary.md >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Archive CRA Annex II Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cra-compliance-dossier
+          path: |
+            build/cra-artifacts/sbom.cyclonedx.json
+            build/cra-artifacts/vex.openvex.json
+            build/cra-artifacts/cra_gate_summary.json
+            build/cra-artifacts/cra_gate_summary.md
+          retention-days: 90

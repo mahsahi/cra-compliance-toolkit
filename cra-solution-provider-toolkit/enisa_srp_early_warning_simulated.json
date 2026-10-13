@@ -1,0 +1,39 @@
+{
+  "report_type": "article_14_2_a_early_warning",
+  "statutory_basis": "Regulation (EU) 2024/2847, Article 14(2)(a)",
+  "submission_timestamp": "2026-10-12T20:00:00Z",
+  "awareness_timestamp": "2026-10-12T08:00:00Z",
+  "manufacturer": {
+    "name": "SecureEdge Technologies Ltd",
+    "country_of_establishment": "IE",
+    "lead_csirt": "CSIRT-IE",
+    "contact_email": "psirt-lead@secureedge.com",
+    "contact_phone": "+353-1-496-0120"
+  },
+  "product": {
+    "commercial_name": "SecureEdge Gateway 5000",
+    "model_number": "SEG-5000",
+    "affected_versions": [
+      "3.4.0",
+      "3.3.2",
+      "3.3.1"
+    ],
+    "cpe": "cpe:2.3:o:secureedge:seg-5000_firmware:*:*:*:*:*:*:*:*"
+  },
+  "vulnerability_event": {
+    "cve_id": "CVE-2026-49120",
+    "general_nature": "Unauthenticated Remote Heap Buffer Overflow in network framing daemon (netframed)",
+    "active_exploitation_confirmed": true,
+    "known_exploited_member_states": [
+      "DE",
+      "FR",
+      "IE",
+      "NL"
+    ]
+  },
+  "delayed_dissemination_request": {
+    "requested": true,
+    "legal_basis": "Delegated Regulation (EU) 2026/881, Article 2",
+    "justification": "Mitigation and firmware patch are actively under engineering. Public disclosure prior to patch release will induce severe systemic security risks across critical industrial customer networks."
+  }
+}

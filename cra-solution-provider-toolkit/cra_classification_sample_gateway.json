@@ -1,0 +1,52 @@
+{
+  "assessment_id": "CRA-CLASS-20261012164008",
+  "timestamp_utc": "2026-10-12T14:40:08Z",
+  "product_name": "SmartEdge Telemetry Hub 400",
+  "vendor_name": "Industrial Logic BV",
+  "intended_purpose": "Industrial telemetry ingestion, local sensor protocol conversion, and cloud MQTT egress",
+  "classification": {
+    "tier": "Important Product with Digital Elements \u2014 Class I (Annex III)",
+    "tier_short": "CLASS_I",
+    "statutory_basis": "Article 7(1) & Annex III",
+    "annex_iii_triggers": [
+      "vpn_function"
+    ],
+    "annex_iv_triggers": [],
+    "critical_art8_trigger": false
+  },
+  "conformity_assessment": {
+    "notified_body_mandatory": true,
+    "harmonised_standards_fully_applied": false,
+    "permitted_routes": [
+      {
+        "module": "Module A (BLOCKED)",
+        "annex": "Annex VIII",
+        "notified_body_involved": false,
+        "status": "DISQUALIFIED",
+        "notes": "Module A cannot be used because harmonised standards are absent, partial, or unverified."
+      },
+      {
+        "module": "Module B + Module C (EU-Type Examination + Conformity to Type)",
+        "annex": "Annex IX & X",
+        "notified_body_involved": true,
+        "status": "STANDARD NOTIFIED BODY ROUTE",
+        "notes": "Notified Body examines technical dossier and issues EU-Type Examination Certificate."
+      },
+      {
+        "module": "Module H (Full Quality Assurance)",
+        "annex": "Annex XI",
+        "notified_body_involved": true,
+        "status": "ORGANISATIONAL CERTIFICATION ROUTE",
+        "notes": "Notified Body audits and approves manufacturer quality management system and secure SDLC."
+      }
+    ],
+    "cost_estimate": "\u20ac50,000 \u2013 \u20ac150,000 (Notified Body fees + audit prep)",
+    "lead_time_estimate": "6 \u2013 9 Months (Notified Body queue & laboratory testing)"
+  },
+  "boundary_analysis": {
+    "boundary_warning_flags": [],
+    "descope_recommendations": [
+      "VPN De-Scoping: If VPN tunnel is used solely for the device's own telemetry/management, convert to outbound mTLS client session. Remove generic routing/split-tunneling for third-party traffic to avoid Annex III(5) Class I classification."
+    ]
+  }
+}
